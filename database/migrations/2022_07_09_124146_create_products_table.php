@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price');
             $table->text('description');
             $table->string('image');
+            $table->foreignId('tenant_id')->constrained();
             $table->timestamps();
         });
     }
