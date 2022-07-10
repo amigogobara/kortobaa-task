@@ -17,7 +17,7 @@ class Login
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt(array_merge( $credentials,[ 'tenant_id' => $tenant->id ] ))) {
-            return response()->json(['error' => 'wrong email or password'], 401);
+            return response()->json(['message' => 'wrong email or password'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -28,7 +28,7 @@ class Login
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt(array_merge( $credentials,[ 'is_admin' => 1 ] ))) {
-            return response()->json(['error' => 'wrong email or password'], 401);
+            return response()->json(['message' => 'wrong email or password'], 401);
         }
 
         return $this->respondWithToken($token);
