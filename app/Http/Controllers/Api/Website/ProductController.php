@@ -13,12 +13,12 @@ class ProductController extends Controller
         return response()->json(Product::index());
     }
 
-    public function show()
+    public function show($id)
     {
-        $product = Product::show();
+        $product = Product::show($id);
 
         if(is_null($product)){
-            throw new NotFoundResourceException('This product not found',404);
+            return response()->json(['message' => 'This product is not found'],404);
         }
 
         return response()->json($product);
