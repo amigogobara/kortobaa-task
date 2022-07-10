@@ -24,7 +24,7 @@ class Registration
         return User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'tenant_id' => $tenant->id,
             'email_verified_at' => now()
         ]);
