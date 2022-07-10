@@ -26,8 +26,8 @@ Route::group(['middleware' => 'tenant-auth'] , function(){
 Route::group(['prefix' => 'admin'],function(){
     Route::post('login',[\App\Http\Controllers\Api\Auth\LoginController::class,'adminLogin']);
 
-    Route::group(['middleware' => 'auth:api'],function (){
-
+    Route::group(['middleware' => ['auth:api','admin']],function (){
+        Route::resource('products',\App\Http\Controllers\Api\Admin\ProductController::class);
     });
 
 });
