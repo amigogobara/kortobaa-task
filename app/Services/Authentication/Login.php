@@ -23,6 +23,17 @@ class Login
         return $this->respondWithToken($token);
     }
 
+    public function adminLogin()
+    {
+        $credentials = request(['email', 'password']);
+
+        if (! $token = auth()->attempt(array_merge( $credentials,[ 'is_admin' => 1 ] ))) {
+            return response()->json(['error' => 'wrong email or password'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
     /**
      * Get the token array structure.
      *

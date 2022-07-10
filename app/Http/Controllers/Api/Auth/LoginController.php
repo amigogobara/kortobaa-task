@@ -14,13 +14,18 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','adminLogin']]);
     }
 
 
     public function login()
     {
         return Login::login();
+    }
+
+    public function adminLogin()
+    {
+        return Login::adminLogin();
     }
 
     public function logout()

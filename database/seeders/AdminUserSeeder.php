@@ -21,7 +21,7 @@ class AdminUserSeeder extends Seeder
             User::create([
                 'name' => 'ahmed salim',
                 'email' => 'ahmed_salim@rocketmail.com',
-                'password' => bcrypt(12345678),
+                'password' => bcrypt("12345678"),
                 'email_verified_at' => now(),
                 'tenant_id' => $tenant->id,
                 'is_admin' => 1

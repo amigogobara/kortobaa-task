@@ -23,6 +23,11 @@ Route::group(['middleware' => 'tenant-auth'] , function(){
     Route::get('/products/{id}',[\App\Http\Controllers\Api\Website\ProductController::class,'show']);
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'admin'],function(){
+    Route::post('login',[\App\Http\Controllers\Api\Auth\LoginController::class,'adminLogin']);
+
+    Route::group(['middleware' => 'auth:api'],function (){
+
+    });
 
 });
