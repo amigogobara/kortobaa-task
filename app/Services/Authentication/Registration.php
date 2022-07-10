@@ -13,7 +13,7 @@ class Registration
         $user = $this->create($request,$tenant);
 
         return response()->json([
-            'token' => auth()->tokenById($user->id),
+            'token' => $this->respondWithToken(auth()->tokenById($user->id)),
             'user' => $user
         ]);
     }
@@ -28,5 +28,21 @@ class Registration
             'tenant_id' => $tenant->id,
             'email_verified_at' => now()
         ]);
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return array
+     */
+    protected function respondWithToken($token)
+    {
+        return [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ];
     }
 }
