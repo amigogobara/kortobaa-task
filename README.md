@@ -5,6 +5,8 @@
 Installation guide:
 <br>
 * install docker and docker compose
+* for Windows user you need to install this software
+https://docs.microsoft.com/en-us/windows/wsl/install
 <br>
 Then
 <br>
