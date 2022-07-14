@@ -12,4 +12,11 @@ class Product extends Model
     protected $fillable = [
         'name','price','description','tenant_id'
     ];
+
+    protected $with = ['tenant'];
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 }
